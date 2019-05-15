@@ -25,6 +25,17 @@ export class Provider extends React.Component {
     isLoaded: false
   };
 
+  componentDidMount() {
+    fetch(`https://api.musixmatch.com/ws/1.1/`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          isLoaded: true,
+          track_list: data
+        });
+      });
+  }
+
   //handle field change (get the field and set it's value to the input)
   handleChange = input => e => {
     this.setState({ [input]: e.target.value });
