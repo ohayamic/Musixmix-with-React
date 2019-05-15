@@ -4,7 +4,7 @@ import React from "react";
 
 // get the createContext API
 const ContentProvider = React.createContext();
-
+const apikey = "19cda0d160323934029a9061d179ee16";
 export class Provider extends React.Component {
   state = {
     userInfo: {
@@ -26,7 +26,9 @@ export class Provider extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`https://api.musixmatch.com/ws/1.1/`)
+    fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=5&country=it&f_has_lyrics=1&apikey=${apikey}`
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({

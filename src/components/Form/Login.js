@@ -12,7 +12,8 @@ class Login extends React.Component {
     return (
       <ContextConsumer>
         {value => {
-          const { handleChange } = this.handleChange;
+          console.log(value);
+          const { handleChange } = value.handleChange;
           return (
             <div className="container" style={divStyle}>
               <form>
