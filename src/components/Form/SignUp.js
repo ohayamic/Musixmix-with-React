@@ -1,5 +1,5 @@
 import React from "react";
-import { ContextConsumer } from "../Context";
+import { Consumer } from "../Context";
 import { Link } from "react-router-dom";
 const divStyle = {
   margin: "0 auto",
@@ -8,9 +8,11 @@ const divStyle = {
 class SignUp extends React.Component {
   render() {
     return (
-      <ContextConsumer>
+      <Consumer>
         {value => {
-          console.log(value);
+          const { userInfo } = value.userInfo;
+          //const { handleChange } = value.handleChange;
+          console.log(userInfo);
           return (
             <div className="container" style={divStyle}>
               <form>
@@ -60,7 +62,7 @@ class SignUp extends React.Component {
             </div>
           );
         }}
-      </ContextConsumer>
+      </Consumer>
     );
   }
 }

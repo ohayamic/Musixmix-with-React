@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ContextConsumer } from "../Context";
+import { Consumer } from "../Context";
 //import TextField from "material-ui";
 
 const divStyle = {
@@ -10,10 +10,12 @@ const divStyle = {
 class Login extends React.Component {
   render() {
     return (
-      <ContextConsumer>
+      <Consumer>
         {value => {
-          console.log(value);
-          const { handleChange } = value.handleChange;
+          const { userInfo } = value.userInfo;
+          //const { handleChange } = value.handleChange;
+          console.log(userInfo);
+          //const { handleChange } = value.handleChange;
           return (
             <div className="container" style={divStyle}>
               <form>
@@ -23,7 +25,6 @@ class Login extends React.Component {
                       type="text"
                       className="form-control"
                       placeholder="Username"
-                      onChange={handleChange("username")}
                     />
                   </div>
                   <div className="col-12 mb-3">
@@ -46,7 +47,7 @@ class Login extends React.Component {
             </div>
           );
         }}
-      </ContextConsumer>
+      </Consumer>
     );
   }
 }
