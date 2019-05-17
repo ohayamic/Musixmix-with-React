@@ -1,56 +1,77 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
 import { Consumer } from "../Context";
 import { Link } from "react-router-dom";
 const divStyle = {
   margin: "0 auto",
-  width: "35%"
+  width: "50%"
 };
 class SignUp extends React.Component {
+  /*handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };*/
   render() {
     return (
       <Consumer>
         {value => {
-          const { userInfo } = value.userInfo;
-          //const { handleChange } = value.handleChange;
+          const { userInfo } = value;
+          const { handleChange } = value;
           console.log(userInfo);
           return (
             <div className="container" style={divStyle}>
-              <form>
-                <div className="form-row">
-                  <div className="col-12 mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter FirstName"
-                    />
-                  </div>
-                  <br />
-                  <div className="col-12 mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter LastName"
-                    />
-                  </div>
-                  <br />
-                  <div className="col-12 mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter Username"
-                    />
-                  </div>
-                  <br />
-                  <div className="col-12 mb-3">
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Enter Password"
-                    />
-                  </div>
-                  <br />
+              <form noValidate autoComplete="off">
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="First Name"
+                    value={userInfo.firstname}
+                    onChange={handleChange("firstname")}
+                    margin="normal"
+                  />
+                </div>
+
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="Last Name"
+                    //value={userInfo.lastname}
+                    onChange={handleChange("lastname")}
+                    margin="normal"
+                  />
+                </div>
+
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="Username"
+                    //value={userInfo.username}
+                    onChange={handleChange("username")}
+                    margin="normal"
+                  />
+                </div>
+
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="Email"
+                    //value={userInfo.email}
+                    onChange={handleChange("email")}
+                    margin="normal"
+                  />
+                </div>
+
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="Password"
+                    type="password"
+                    //value={userInfo.password}
+                    onChange={handleChange("password")}
+                    margin="normal"
+                  />
                 </div>
               </form>
+
               <br />
               <Link to="/login">
                 <p className="btn btn-dark">Sign Up</p>

@@ -41,8 +41,8 @@ export class Provider extends React.Component {
   }
 
   //handle field change (get the field and set it's value to the input)
-  handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
   };
 
   render() {

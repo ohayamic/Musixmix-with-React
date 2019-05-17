@@ -53,7 +53,7 @@ class MainPage extends React.Component {
                             {/*Enter other information here */}
                           </p>
                           <Link
-                            to={`/track/${track_list.track.track_id}`}
+                            to={`/track/${track_list.track.commontrack_id}`}
                             className="btn btn-dark btn-block"
                           >
                             <i className="fas fa-chevron-right mr-3" />

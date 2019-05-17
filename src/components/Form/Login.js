@@ -1,39 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "../Context";
-//import TextField from "material-ui";
+import TextField from "@material-ui/core/TextField";
 
 const divStyle = {
   width: "50%",
   margin: "0 auto"
 };
 class Login extends React.Component {
+  /*handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };*/
+
   render() {
     return (
       <Consumer>
         {value => {
-          const { userInfo } = value.userInfo;
-          //const { handleChange } = value.handleChange;
-          console.log(userInfo);
-          //const { handleChange } = value.handleChange;
+          //const { userInfo } = value;
+          const { handleChange } = value;
           return (
             <div className="container" style={divStyle}>
-              <form>
-                <div className="form-row">
-                  <div className="col-12 mb-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Username"
-                    />
-                  </div>
-                  <div className="col-12 mb-3">
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Password"
-                    />
-                  </div>
+              <form noValidate autoComplete="off">
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="Username/Email"
+                    onChange={handleChange("username")}
+                    margin="normal"
+                  />
+                </div>
+                <div className="col-12 mb-3">
+                  <TextField
+                    id="standard-name"
+                    label="Password"
+                    type="password"
+                    onChange={handleChange("password")}
+                    margin="normal"
+                  />
                 </div>
               </form>
               <br />
