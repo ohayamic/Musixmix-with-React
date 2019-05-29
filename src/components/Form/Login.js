@@ -4,20 +4,20 @@ import { Consumer } from "../Context";
 import TextField from "@material-ui/core/TextField";
 
 const divStyle = {
-  width: "50%",
+  width: "60%",
   margin: "0 auto"
 };
 class Login extends React.Component {
-  /*handleChange = name => event => {
+  handleChange = name => event => {
     this.setState({ [name]: event.target.value });
-  };*/
+  };
 
   render() {
     return (
       <Consumer>
         {value => {
-          //const { userInfo } = value;
-          const { handleChange } = value;
+          const { userInfo, state } = value;
+          console.log(state);
           return (
             <div className="container" style={divStyle}>
               <form noValidate autoComplete="off">
@@ -25,7 +25,8 @@ class Login extends React.Component {
                   <TextField
                     id="standard-name"
                     label="Username/Email"
-                    onChange={handleChange("username")}
+                    defaultValue={userInfo.password}
+                    onChange={this.handleChange("username")}
                     margin="normal"
                   />
                 </div>
@@ -34,7 +35,8 @@ class Login extends React.Component {
                     id="standard-name"
                     label="Password"
                     type="password"
-                    onChange={handleChange("password")}
+                    defaultValue={userInfo.confirmPassword}
+                    onChange={this.handleChange("confirmPassword")}
                     margin="normal"
                   />
                 </div>

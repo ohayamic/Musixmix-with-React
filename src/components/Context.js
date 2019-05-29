@@ -40,20 +40,15 @@ export class Provider extends React.Component {
       .catch(err => console.log(err));
   }
 
-  //handle field change (get the field and set it's value to the input)
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
-
   render() {
     return (
       // use as a wrapper to wrap states and functions
       <Content.Provider
         value={{
+          state: this.state,
           userInfo: this.state.userInfo,
           track_lists: this.state.track_lists,
-          isLoaded: this.state.isLoaded,
-          handleChange: this.handleChange
+          isLoaded: this.state.isLoaded
         }}
       >
         {this.props.children}

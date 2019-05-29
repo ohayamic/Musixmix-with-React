@@ -4,19 +4,28 @@ import { Consumer } from "../Context";
 import { Link } from "react-router-dom";
 const divStyle = {
   margin: "0 auto",
-  width: "50%"
+  width: "60%"
 };
 class SignUp extends React.Component {
-  /*handleChange = name => event => {
+  //handle field change (get the field and set it's value to the input)
+  handleChange = name => event => {
     this.setState({ [name]: event.target.value });
-  };*/
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    //console.log(e);
+    const { firstname, lastname, username, email, password } = this.userInfo;
+    const value = { firstname, lastname, username, email, password };
+  };
+
   render() {
     return (
       <Consumer>
         {value => {
           const { userInfo } = value;
-          const { handleChange } = value;
-          console.log(userInfo);
+          //const { handleChange } = value;
+
           return (
             <div className="container" style={divStyle}>
               <form noValidate autoComplete="off">
@@ -24,8 +33,8 @@ class SignUp extends React.Component {
                   <TextField
                     id="standard-name"
                     label="First Name"
-                    value={userInfo.firstname}
-                    onChange={handleChange("firstname")}
+                    defaultValue={userInfo.firstname}
+                    onChange={this.handleChange("firstname")}
                     margin="normal"
                   />
                 </div>
@@ -34,8 +43,8 @@ class SignUp extends React.Component {
                   <TextField
                     id="standard-name"
                     label="Last Name"
-                    //value={userInfo.lastname}
-                    onChange={handleChange("lastname")}
+                    defaultValue={userInfo.lastname}
+                    onChange={this.handleChange("lastname")}
                     margin="normal"
                   />
                 </div>
@@ -44,8 +53,8 @@ class SignUp extends React.Component {
                   <TextField
                     id="standard-name"
                     label="Username"
-                    //value={userInfo.username}
-                    onChange={handleChange("username")}
+                    defaultValue={userInfo.username}
+                    onChange={this.handleChange("username")}
                     margin="normal"
                   />
                 </div>
@@ -54,8 +63,8 @@ class SignUp extends React.Component {
                   <TextField
                     id="standard-name"
                     label="Email"
-                    //value={userInfo.email}
-                    onChange={handleChange("email")}
+                    defaultValue={userInfo.email}
+                    onChange={this.handleChange("email")}
                     margin="normal"
                   />
                 </div>
@@ -65,21 +74,26 @@ class SignUp extends React.Component {
                     id="standard-name"
                     label="Password"
                     type="password"
-                    //value={userInfo.password}
-                    onChange={handleChange("password")}
+                    defaultValue={userInfo.password}
+                    onChange={this.handleChange("password")}
                     margin="normal"
                   />
                 </div>
-              </form>
 
-              <br />
-              <Link to="/login">
-                <p className="btn btn-dark">Sign Up</p>
-              </Link>
-              <small className="m-2">Already Registered!</small>
-              <Link to="/login">
-                <p className="btn btn-dark"> Login</p>
-              </Link>
+                <br />
+                <Link to="/login">
+                  <button
+                    className="btn btn-dark"
+                    onSubmit={e => this.onSubmit(e)}
+                  >
+                    Sign Up
+                  </button>
+                </Link>
+                <small className="m-2">Already Registered!</small>
+                <Link to="/login">
+                  <button className="btn btn-dark"> Login</button>
+                </Link>
+              </form>
             </div>
           );
         }}
