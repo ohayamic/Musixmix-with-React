@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import NavBar from "../NavBar";
 import Spinner from "./spinner";
 
 let apikey = "19cda0d160323934029a9061d179ee16";
@@ -47,15 +49,22 @@ class Track extends Component {
       lyrics === undefined ||
       lyricsIsLoaded === false
     ) {
-      return <Spinner />;
+      return (
+        <div>
+          {" "}
+          <NavBar />
+          <Spinner />
+        </div>
+      );
     } else {
       return (
         <React.Fragment>
+          <NavBar />
           <div style={{ alignItems: "start" }}>
-            <a href="/landingPage" className="btn btn-dark ml-0">
+            <Link to="/landingPage" className="btn btn-dark ml-0">
               <i className="fas fa-chevron-left mr-3" />
               Back
-            </a>
+            </Link>
           </div>
 
           <div className="container">

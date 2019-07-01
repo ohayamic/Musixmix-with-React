@@ -1,5 +1,3 @@
-/*  */
-
 import React from "react";
 
 // get the createContext API
@@ -8,20 +6,6 @@ const apikey = "19cda0d160323934029a9061d179ee16";
 
 export class Provider extends React.Component {
   state = {
-    userInfo: {
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      firstnameError: "",
-      lastnameError: "",
-      usernameError: "",
-      emailError: "",
-      passwordError: "",
-      confirmPasswordError: ""
-    },
     track_lists: [],
     isLoaded: false
   };
@@ -32,6 +16,7 @@ export class Provider extends React.Component {
     )
       .then(res => res.json())
       .then(data => {
+        //console.log(data)
         this.setState({
           isLoaded: true,
           track_lists: data.message.body.track_list
@@ -45,8 +30,6 @@ export class Provider extends React.Component {
       // use as a wrapper to wrap states and functions
       <Content.Provider
         value={{
-          state: this.state,
-          userInfo: this.state.userInfo,
           track_lists: this.state.track_lists,
           isLoaded: this.state.isLoaded
         }}
