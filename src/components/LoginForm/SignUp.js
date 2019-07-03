@@ -5,7 +5,7 @@ const SignUp = props => {
   const style = {
     divStyle: {
       margin: "0 auto",
-      width: "35%"
+      width: "50%"
     },
     input: {
       borderColor: "green"

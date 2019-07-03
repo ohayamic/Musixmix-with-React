@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 
 const Login = ({ handleChange, handleSwitchForm, handleSubmit, userInfo }) => {
   // console.log(props);
-  const divStyle = {
-    width: "35%",
-    margin: "0 auto"
+
+  const style = {
+    divStyle: {
+      width: "50%",
+      margin: "0 auto"
+    },
+    redStyle: {
+      borderColor: "red",
+      marginTop: "0px",
+      marginBottom: "0px"
+    },
+    greenStyle: { borderColor: "green" }
   };
   return (
-    <div className="row" style={divStyle}>
+    <div className="row" style={style.divStyle}>
       <form className="col s12" onSubmit={handleSubmit}>
         {userInfo.usernameEmail !== userInfo.email ? (
           <div className="row">
@@ -17,7 +26,7 @@ const Login = ({ handleChange, handleSwitchForm, handleSubmit, userInfo }) => {
                 type="text"
                 placeholder="Username/Email"
                 name="usernameEmail"
-                style={{ borderColor: "red" }}
+                style={style.redStyle}
                 value={userInfo.usernameEmail}
                 onChange={handleChange}
                 className="validate"
@@ -35,7 +44,7 @@ const Login = ({ handleChange, handleSwitchForm, handleSubmit, userInfo }) => {
                 type="text"
                 placeholder="Username/Email"
                 name="usernameEmail"
-                style={{ borderColor: "green" }}
+                style={style.greenStyle}
                 value={userInfo.usernameEmail}
                 onChange={handleChange}
                 className="validate"
@@ -51,7 +60,7 @@ const Login = ({ handleChange, handleSwitchForm, handleSubmit, userInfo }) => {
                 type="password"
                 placeholder="Confirm Password"
                 name="confirmPassword"
-                style={{ borderColor: "red" }}
+                style={style.redStyle}
                 value={userInfo.confirmPassword}
                 onChange={handleChange}
                 className="validate"
@@ -67,7 +76,7 @@ const Login = ({ handleChange, handleSwitchForm, handleSubmit, userInfo }) => {
                 type="password"
                 placeholder="Confirm Password"
                 name="confirmPassword"
-                style={{ borderColor: "green" }}
+                style={style.greenStyle}
                 value={userInfo.confirmPassword}
                 onChange={handleChange}
                 className="validate"
