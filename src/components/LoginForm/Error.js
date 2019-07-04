@@ -1,5 +1,9 @@
 import React from "react";
 import FormNavBar from "../FormNavBar";
+import pic1 from "../../Images/pic1.jpg";
+import pic2 from "../../Images/pic2.jpg";
+import pic3 from "../../Images/pic3.jpg";
+import pic4 from "../../Images/pic4.jpg";
 
 const Error = props => {
   setTimeout(() => {
@@ -7,18 +11,27 @@ const Error = props => {
   }, 2000);
 
   const style = {
-    width: "50%",
-    margin: "0 auto"
+    container: {
+      width: "80%",
+      margin: "0 auto"
+    },
+    img: {
+      width: "95%",
+      height: "95%",
+      margin: "0 auto"
+    }
   };
+  const getImages = [pic1, pic2, pic3, pic4];
+  const useImage = getImages[Math.floor(Math.random() * 4)];
   return (
-    <React.Fragment>
+    <div>
       <FormNavBar />
       <div className="row">
         <div className=" col s12 m5">
-          <div>Image</div>
+          <img src={useImage} alt="Display Custom" style={style.img} />
         </div>
         <div className=" col s12 m7">
-          <div className="container" style={style}>
+          <div className="container" style={style.container}>
             <div className="row">
               <div className="col s6 m6">
                 <div className="card red darken-1">
@@ -34,7 +47,7 @@ const Error = props => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 export default Error;
